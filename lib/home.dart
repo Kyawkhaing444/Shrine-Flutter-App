@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:Shrine/supplemental/asymmetric_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -60,12 +61,9 @@ class HomePage extends StatelessWidget {
         ],
       ),
       // TODO: Add a grid view (102)
-      body: GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 8.0 / 9.0,
-        padding: EdgeInsets.all(16),
-        children: _buildGridCards(context),
-      ),
+      body: AsymmetricView(
+          products: ProductsRepository.loadProducts(Category.all)),
+
       // TODO: Set resizeToAvoidBottomInset (101)
       resizeToAvoidBottomInset: false,
     );
@@ -84,6 +82,7 @@ class HomePage extends StatelessWidget {
     return products.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
+        elevation: 0.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

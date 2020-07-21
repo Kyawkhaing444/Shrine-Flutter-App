@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 12.0,
             ),
             TextField(
-              controller: _usernameController,
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
                 labelStyle: TextStyle(
@@ -87,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                         ? Theme.of(context).accentColor
                         : _unfocusedColor),
               ),
+              obscureText: true,
               focusNode: _passwordFocusNode,
             ),
             // TODO: Add button bar (101)
@@ -94,6 +95,8 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 FlatButton(
                   child: Text('CANCEL'),
+                  shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0))),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -101,9 +104,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 RaisedButton(
                   child: Text("NEXT"),
+                  shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0))),
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  elevation: 8.0,
                 )
               ],
             )
