@@ -22,12 +22,14 @@ import 'model/product.dart';
 class HomePage extends StatelessWidget {
   // TODO: Make a collection of cards (102)
   // TODO: Add a variable for Category (104)
+  final Category category;
+
+  const HomePage({this.category: Category.all});
   @override
   Widget build(BuildContext context) {
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
-    return AsymmetricView(
-        products: ProductsRepository.loadProducts(Category.all));
+    return AsymmetricView(products: ProductsRepository.loadProducts(category));
   }
 
   List<Card> _buildGridCards(BuildContext context) {
